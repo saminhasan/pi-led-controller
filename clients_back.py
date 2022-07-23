@@ -4,7 +4,8 @@ import time
 LED_COUNT=48
 PORT = 1234
 
-addresses = ['192.168.10.101', '192.168.10.102', '192.168.10.103']
+# addresses = ['192.168.10.101', '192.168.10.102']
+addresses = ['192.168.10.101']
 
 clients = []
 for address in addresses:
@@ -22,29 +23,31 @@ try:
 				datas[:,0] = 255
 			else:
 				datas[:,2] = 255
-			'''
-			if counter < 10:
+			if False:
 				datas[:,0] = int(127 * (np.sin(counter + np.radians(120.0) * idx) + 1 ))
 				datas[:,1] = int(127 * (np.sin(counter + np.radians(120.0) + np.radians(120.0) * idx) + 1 )) # 255 * np.sin(counter + np.radians(120.0))
 				datas[:,2] = int(127 * (np.sin(counter + np.radians(240.0)+ np.radians(120.0)* idx) + 1 ))  # 255 * np.sin(counter + np.radians(240.0))
-				
-			elif counter > 10 and counter < 20:
+							'''
+
+			if True:
 				datas[:,0] = int(127 * (np.sin(counter) + 1 ))
 				datas[:,1] = int(127 * (np.sin(counter + np.radians(120.0) ) + 1 )) # 255 * np.sin(counter + np.radians(120.0))
 				datas[:,2] = int(127 * (np.sin(counter + np.radians(240.0)) + 1 ))
+			'''
 
 			else:
 				datas[:,0] = int(127 * (np.sin(counter + np.radians(120.0) * idx) + 1 ))
 				datas[:,1] = int(127 * (np.sin(counter + np.radians(120.0) + np.radians(120.0) * idx) + 1 )) # 255 * np.sin(counter + np.radians(120.0))
 				datas[:,2] = int(127 * (np.sin(counter + np.radians(240.0)+ np.radians(120.0)* idx) + 1 ))
 				counter += .1
+			'''
 
 			client.send_data(datas)
 			
 		counter += .05
 		#counter += 1
 		print(counter, end='\r')
-		time.sleep(0.01)
+		time.sleep(0.1)
 
 except KeyboardInterrupt:
 		print("\nUser Interrupt")
